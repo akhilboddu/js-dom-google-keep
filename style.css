@@ -8,6 +8,8 @@
 
 }
 
+/* HOVER EFEECTS */
+
 .material-icons-outlined {
     padding: 10px;
 }
@@ -18,6 +20,30 @@
     cursor: pointer;
 }
 
+.tooltip {
+    position: relative;
+}
+.tooltip-text {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    font-size: 0.78rem;
+    background-color: #323232;
+    color: white;
+    opacity: 0.8;
+    padding: 5px;
+    white-space: nowrap;
+    border-radius: 5px;
+    visibility: hidden;
+    z-index: 1;
+}
+.tooltip:hover .tooltip-text {
+    visibility: visible;
+}
+
+
+/* NAVBAR STYLES */
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -25,6 +51,7 @@ nav {
     height: 64px;
     border-bottom: 1px solid #dadce0;
     padding: 8px;
+    margin: 0 10px;
     color: #5f6368;
 }
 
@@ -58,5 +85,55 @@ input:focus {
 }
 .search-area span {
     margin-left: 10px;
+}
+
+.settings-area {
+    display: flex;
+}
+
+.profile-actions-area {
+    display: flex;
+}
+
+/* MAIN SECTION STYLES */
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    color: #5f6368;
+    width: 80px;
+    overflow-x: hidden
+}
+.active {
+    background-color: #fef0c3;
+    border-radius: 50%;
+    color: black;
+}
+.active:hover {
+    background-color: #fef0c3;
+}
+.sidebar .sidebar-item {
+    margin-left: 18px;
+    padding: 3px 0;
+    display: flex;
+    align-items: center;
+}
+.sidebar-item .sidebar-text {
+    color: black;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    width: 250px;
+}
+.sidebar-item:nth-child(1) {
+    margin-top: 5px;
+}
+
+
+/* MAIN FORM */
+.form-container {
+    max-width: 598px;
 }
 
