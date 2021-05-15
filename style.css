@@ -174,7 +174,7 @@ input:focus {
 }
 
 .active-form {
-    
+    display: none;
 }
 .active-form form {
     display: flex;
@@ -239,6 +239,29 @@ input:focus {
     position: absolute;
     left: -10px;
     top: -10px;
+}
+
+/* MODAL CONTENT */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    visibility: hidden;
+}
+
+.modal-content {
+    width: 589px;
+    position: relative;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.open-modal {
+    visibility: visible;
 }
 
 
