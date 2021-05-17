@@ -15,6 +15,7 @@ class App {
         this.$noteTitle = document.querySelector("#note-title");
         this.$noteText = document.querySelector("#note-text");
         this.$notes = document.querySelector(".notes");
+        this.$form = document.querySelector("#form");
 
         this.addEventListeners();
     }
@@ -23,6 +24,15 @@ class App {
         document.body.addEventListener("click", (event) => {
             this.handleFormClick(event);
         })
+
+        this.$form.addEventListener("submit", (event) => {
+            event.preventDefault();
+            const title = this.$noteTitle.value;
+            const text = this.$noteText.value;
+            this.addNote({ title, text });
+            this.closeActiveForm();
+
+        })
     }
 
     handleFormClick(event) {
@@ -30,11 +40,11 @@ class App {
         const isInactiveFormClickedOn = this.$inactiveForm.contains(event.target);
         const title = this.$noteTitle.value;
         const text = this.$noteText.value;
-        
-        if(isInactiveFormClickedOn) {
+
+        if (isInactiveFormClickedOn) {
             this.openActiveForm();
         }
-        else if(!isInactiveFormClickedOn && !isActiveFormClickedOn) {
+        else if (!isInactiveFormClickedOn && !isActiveFormClickedOn) {
             this.addNote({ title, text });
             this.closeActiveForm();
         }
@@ -53,7 +63,7 @@ class App {
     }
 
     addNote({ title, text }) {
-        if(text != "") {
+        if (text != "") {
             const newNote = new Note(cuid(), title, text);
             this.notes = [...this.notes, newNote];
             this.displayNotes();
@@ -76,7 +86,7 @@ class App {
 
     displayNotes() {
         this.$notes.innerHTML = this.notes.map((note) =>
-        `
+            `
         <div class="note" id="${note.id}">
             <span class="material-icons check-circle">check_circle</span>
             <div class="title">${note.title}</div>

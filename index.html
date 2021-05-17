@@ -102,7 +102,7 @@
         </div>
 
         <div class="form-container active-form">
-            <form>
+            <form class=".form" id="form">
                 <input id="note-title" type="text" class="note-title" placeholder="Title">
                 <input id="note-text" class="note-text" type="text" placeholder="Take a note...">
                 <div class="form-actions">
@@ -146,44 +146,12 @@
             </form>
         </div>
 
-        <div class="notes">
-            <div class="note">
-                <span class="material-icons check-circle">check_circle</span>
-                <div class="title">Title</div>
-                <div class="text">Text</div>
-                <div class="note-footer">
-                    <div class="tooltip">
-                        <span class="material-icons-outlined hover small-icon">add_alert</span>
-                        <span class="tooltip-text">Remind me</span>
-                    </div>
-                    <div class="tooltip">
-                        <span class="material-icons-outlined hover small-icon">person_add</span>
-                        <span class="tooltip-text">Collaborator</span>
-                    </div>
-                    <div class="tooltip">
-                        <span class="material-icons-outlined hover small-icon">palette</span>
-                        <span class="tooltip-text">Change Color</span>
-                    </div>
-                    <div class="tooltip">
-                        <span class="material-icons-outlined hover small-icon">image</span>
-                        <span class="tooltip-text">Add Image</span>
-                    </div>
-                    <div class="tooltip">
-                        <span class="material-icons-outlined hover small-icon">archive</span>
-                        <span class="tooltip-text">Archive</span>
-                    </div>
-                    <div class="tooltip">
-                        <span class="material-icons-outlined hover small-icon">more_vert</span>
-                        <span class="tooltip-text">More</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="notes"></div>
 
         <div class="modal">
             <div class="modal-content">
                 <div class="form-container active-form">
-                    <form>
+                    <form class=".form" id="modal-form">
                         <input type="text" class="note-title" placeholder="Title">
                         <input class="note-text" type="text" placeholder="Take a note...">
                         <div class="form-actions">
