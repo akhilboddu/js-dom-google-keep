@@ -31,6 +31,7 @@ class App {
             this.handleFormClick(event)
             this.closeModal(event)
             this.openModal(event)
+            this.handleArchiving(event)
         })
 
         this.$form.addEventListener("submit", (event) => {
@@ -72,7 +73,7 @@ class App {
 
     openModal(event) {
         const $selectedNote = event.target.closest(".note");
-        if($selectedNote) {
+        if($selectedNote && !event.target.closest(".archive")) {
             this.selectedNoteId = $selectedNote.id;
             this.$modalTitle.value = $selectedNote.children[1].innerHTML;
             this.$modalText.value = $selectedNote.children[2].innerHTML
@@ -86,6 +87,16 @@ class App {
         if(!isModalFormClickedOn && this.$modal.classList.contains("open-modal")) {
             this.editNote(this.selectedNoteId, { title: this.$modalTitle.value, text: this.$modalText.value })
             this.$modal.classList.remove("open-modal");
+        }
+    }
+
+    handleArchiving(event) {
+        const $selectedNote = event.target.closest(".note");
+        if($selectedNote && event.target.closest(".archive")) {
+            this.selectedNoteId = $selectedNote.id;
+            this.deleteNote(this.selectedNoteId);
+        } else {
+            return;
         }
     }
 
@@ -110,6 +121,7 @@ class App {
 
     deleteNote(id) {
         this.notes = this.notes.filter((note) => note.id != id);
+        this.displayNotes();
     }
 
     handleMouseOverNote(element) {
@@ -151,7 +163,7 @@ class App {
                     <span class="material-icons-outlined hover small-icon">image</span>
                     <span class="tooltip-text">Add Image</span>
                 </div>
-                <div class="tooltip">
+                <div class="tooltip archive">
                     <span class="material-icons-outlined hover small-icon">archive</span>
                     <span class="tooltip-text">Archive</span>
                 </div>
