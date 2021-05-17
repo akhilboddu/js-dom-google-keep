@@ -11,8 +11,25 @@ class App {
         this.notes = [];
 
         this.$activeForm = document.querySelector(".active-form");
-        this.$activeForm.style.display = "block";
-        console.log(this.$activeForm);
+        this.$inactiveForm = document.querySelector(".inactive-form");
+
+        this.addEventListeners();
+    }
+
+    addEventListeners() {
+        document.body.addEventListener("click", (event) => {
+            this.handleFormClick(event);
+        })
+    }
+
+    handleFormClick(event) {
+        const isActiveFormClickedOn = this.$activeForm.contains(event.target);
+        const isInactiveFormClickedOn = this.$inactiveForm.contains(event.target);
+
+        if(isInactiveFormClickedOn) {
+            this.$inactiveForm.style.display = "none";
+            this.$activeForm.style.display = "block";
+        }
     }
 
     addNote(id, { title, text }) {
