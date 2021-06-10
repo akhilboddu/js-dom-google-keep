@@ -10,7 +10,8 @@ class App {
     constructor() {
         // localStorage.setItem('test', JSON.stringify(['123']));
         // console.log(JSON.parse(localStorage.getItem('test')));
-        this.notes = [new Note("abc1", "test title", "test text")];
+        this.notes = JSON.parse(localStorage.getItem('notes')) || [];
+        console.log(this.notes);
         this.selectedNoteId = ""
         this.miniSidebar = true;
 
@@ -123,7 +124,7 @@ class App {
         if (text != "") {
             const newNote = new Note(cuid(), title, text);
             this.notes = [...this.notes, newNote];
-            this.displayNotes();
+            this.render();
         }
     }
 
@@ -135,12 +136,12 @@ class App {
             }
             return note;
         });
-        this.displayNotes();
+        this.render();
     }
 
     deleteNote(id) {
         this.notes = this.notes.filter((note) => note.id != id);
-        this.displayNotes();
+        this.render();
     }
 
     handleMouseOverNote(element) {
@@ -173,6 +174,14 @@ class App {
         }
     }
     
+    saveNotes() {
+        localStorage.setItem('notes', JSON.stringify(this.notes));
+    }
+
+    render() {
+        this.saveNotes();
+        this.displayNotes();
+    }
     displayNotes() {
         this.$notes.innerHTML = this.notes.map((note) =>
             `
